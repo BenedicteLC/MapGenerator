@@ -1,0 +1,18 @@
+explore_costmap:
+  global_frame: /map
+  robot_base_frame: base_link
+  update_frequency: 1.0
+  publish_frequency: 0.0
+  raytrace_range: 5.0
+  obstacle_range: 5.0
+  static_map: true
+  rolling_window: false
+  width: 60.0
+  height: 60.0
+  resolution: 0.2
+  origin_x: 0.0
+  origin_y: 0.0
+  track_unknown_space: true
+  publish_voxel_map: true
+  unknown_cost_value: 255 
+  transform_tolerance: 0.5

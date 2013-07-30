@@ -1,0 +1,91 @@
+/*********************************************************************
+ *
+ * Software License Agreement (BSD License)
+ *
+ *  2013, Benedicte LC 		LLC.
+ *  
+ *
+ *
+ *********************************************************************/
+
+#include <ros/ros.h>
+/*#include <nav_msgs/GetMap.h>
+#include <costmap_2d/costmap_2d_ros.h>
+#include <costmap_2d/costmap_2d.h>
+#include <navfn/navfn_ros.h>*/
+#include <sys/stat.h>
+// libstage
+#include <stage.hh>
+
+
+//using namespace navfn;
+
+class Obstacle {
+private:
+	int argc;
+	char **argv;
+	//World file.
+	char *fname;
+	int obstacleList[];
+public:
+	inline Obstacle(int argc, char** argv, char* fname); //TODO REMOVE INLINE
+	inline ~Obstacle();
+	
+	inline int* getObstacleList(); //TODO REMOVE INLINE
+
+
+};
+
+//Constructor.
+Obstacle::Obstacle(int argc, char** argv, char* fname){
+	this->argc = argc;
+	this->argv = argv;
+	this->fname = fname;
+}
+
+//Destructor
+Obstacle::~Obstacle(){  
+}
+
+int* Obstacle::getObstacleList(){
+	
+  int* obstacles = 0; //TODO
+
+  // We'll check the existence of the world file, because libstage doesn't
+  // expose its failure to open it.  Could go further with checks (e.g., is
+  // it readable by this user).
+  struct stat s;
+ 
+  
+ 
+ if(stat(fname, &s) != 0) {
+    ROS_FATAL("The world file %s does not exist.", fname);
+    ROS_BREAK();
+  }
+
+  // initialize libstage
+  Stg::Init(&argc, &argv );
+ 
+  Stg::World *world = new Stg::World();
+
+  // Apparently an Update is needed before the Load to avoid crashes on
+  // startup on some systems.
+  // As of Stage 4.1.1, this update call causes a hang on start.
+  //this->UpdateWorld();
+  world->Load(fname);
+
+
+
+  /*ros::init(argc, argv, "compare");
+
+ 
+  while (ros::ok()) {
+
+      
+    ros::spinOnce();
+    loop_rate.sleep();  
+
+  }*/
+
+  return obstacles;
+}

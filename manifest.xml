@@ -1,0 +1,20 @@
+<package>
+  <description brief="map_compare">
+
+     Compares a map build by slam_gmapping with the ground truth.
+  </description>
+  <author>Benedicte LC</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>None</url>
+  <depend package="stage"/>
+  <depend package="gmapping"/>
+  <depend package="move_base"/>
+  <depend package="tf"/>  
+  <depend package="move_base_msgs"/>
+  <depend package="roscpp"/>
+  <depend package="actionlib"/>
+
+</package>
+
+

@@ -1,0 +1,6 @@
+<launch>
+  <master auto="start"/>
+  <param name="/use_sim_time" value="true"/>  
+  <include file="$(find map_generator)/generator.xml" />
+    
+</launch>

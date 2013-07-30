@@ -1,0 +1,7 @@
+<launch>
+  <node pkg="map_generator" type="generator" args="/home/bennie/fuerte_workspace/worlds/MC.world MC 2000 2000" respawn="false" name="map_generator" output="screen" >
+    <rosparam file="$(find map_generator)/config/footprint.yaml" command="load" />
+    <rosparam file="$(find map_generator)/config/costmap_common.yaml" command="load" ns="generator_costmap" />
+    <rosparam file="$(find map_generator)/generator/generator_costmap.yaml" command="load" /> 
+  </node>  
+</launch>
